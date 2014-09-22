@@ -16,5 +16,15 @@ public class WaitCell extends NormalCell {
 		}
 		return true;
 	}
+	
+	public int getWaitTime(){
+		return this.waitTime;
+	}
+	
+	@Override
+	public int handleMove(int diceThrow) {
+		System.out.print(" but it's a wait cell !");
+		return super.handleMove(diceThrow);
+	}
 
 }

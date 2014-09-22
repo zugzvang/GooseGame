@@ -6,15 +6,12 @@ public class NormalCell implements Cell {
 	private boolean busy;
 	
 	public NormalCell(int idx) {
-		
 		this.index = idx;
 	}
 
 	@Override
 	public boolean canBeLeftNow() {
-		if(this.isRetaining())
-			return true;
-		return false;
+		return !this.isRetaining();
 	}
 
 	@Override
@@ -29,7 +26,7 @@ public class NormalCell implements Cell {
 
 	@Override
 	public int handleMove(int diceThrow) {
-		return this.index;
+		return this.getIndex();
 	}
 
 	@Override

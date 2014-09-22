@@ -32,9 +32,11 @@ public abstract class Board {
 	 * @param diceThrow the original result of the dice throw.
 	 * @return the distance the player will actually do on the board.
 	 */
-	private int normalize(int diceThrow) {
+	private int normalize(int idxNextCell) {
 		// If the player throw a dice making it out of bounds, it goes back in cells as far as the excess goes beyond the limits.
-		return diceThrow - (diceThrow%cells.size()-1);
+		if(idxNextCell>cells.size()-1)
+		 return idxNextCell - (idxNextCell%(cells.size()-1));
+		return idxNextCell;
 	}
 	
 	/**
@@ -64,14 +66,23 @@ public abstract class Board {
 	public void playTurn(Player p, int diceThrow) {
 		Cell currCell = this.getCell(p.getCurrentCell());
 		if(currCell.canBeLeftNow()){
+			int idxNextCell;
 			// Makes the score stay within the bounds
-			this.normalize(diceThrow);
+			System.out.print(p.getName()+" throws a "+diceThrow+"");
+			idxNextCell = this.normalize(p.getCurrentCell()+diceThrow);
 			// Then applies the optionnal special effect
-			int idxNextCell = this.getCell(p.getCurrentCell()+diceThrow).handleMove(diceThrow);
+			idxNextCell = this.getCell(idxNextCell).handleMove(diceThrow);
 			// And makes it stay within the bounds again
 			idxNextCell=this.normalize(idxNextCell);
+			System.out.print(" cell "+idxNextCell+" is reached\n");
 			// To finnally make the player move to the actual cell
 			this.moveTo(p, idxNextCell);
+		}else{
+			if(currCell.isRetaining()){
+				System.out.print(p.getName()+" is trapped !");
+			}else if(currCell instanceof WaitCell){
+				System.out.println(p.getName()+" must wait "+((WaitCell) currCell).getWaitTime()+" turns to continue");
+			}
 		}
 	}
 	
@@ -126,7 +137,7 @@ public abstract class Board {
 	 * @return the last cell.
 	 */
 	public Cell getEndCell() {
-		return cells.get(cells.size()-1);
+		return cells.get(this.getEndCellIdx());
 	}
 	
 	/**

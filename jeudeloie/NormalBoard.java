@@ -13,7 +13,7 @@ public class NormalBoard extends Board {
 	@Override
 	public void init() {
 		List<Cell> cells = new ArrayList<Cell>();
-		for(int i=0; i<cells.size();i++){
+		for(int i=0; i<64;i++){
 			cells.add(new NormalCell(i));
 		}
 		super.cells=cells;
