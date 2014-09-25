@@ -29,22 +29,7 @@ public class testBoard {
 		p = new Player("test");
 	}
 	
-	@Test 
-	public void testNamePlayer() {
-		assertEquals("test",p.getName());
-		
-	}
 	
-	@Test
-	public void testInitialScore() {
-		assertEquals(0,p.getScore());
-	}
-	
-	@Test
-	public void testInitialIndex() {
-		assertEquals(0,p.getCurrentCell());
-	}
-
 	@Test
 	public void testNonTrappedPlayer() {
 		list_player = new ArrayList<Player>();
