@@ -12,7 +12,11 @@ public class Player {
 	}
 	
 	public void setCell(int cell) {
-		this.currentCell=cell;
+		if(cell >= 0) {
+			this.currentCell=cell;
+		} else {
+			this.currentCell=0;
+		}
 		
 	}
 

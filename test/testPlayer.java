@@ -24,5 +24,17 @@ public class testPlayer {
 	public void testInitialScore() {
 		assertEquals(0,p.getScore());
 	}
+	@Test
+	public void testModifiedScore() {
+		p.setScore(100);
+		assertEquals(100,p.getScore());
+	}
+	@Test
+	public void testSetCell() {
+		p.setCell(1);
+		assertEquals(1,p.getCurrentCell());
+		p.setCell(-1);
+		assertEquals(0,p.getCurrentCell());
+	}
 
 }
