@@ -34,8 +34,10 @@ public abstract class Board {
 	 */
 	private int normalize(int idxNextCell) {
 		// If the player throw a dice making it out of bounds, it goes back in cells as far as the excess goes beyond the limits.
-		if(idxNextCell>cells.size()-1)
-		 return ((cells.size()-1) - (idxNextCell-cells.size()-1));
+		if(idxNextCell>cells.size()-1){
+			System.out.println(""+(cells.size()-1)+" - "+(idxNextCell-cells.size()-1)+" = "+((cells.size()-1) - (idxNextCell-cells.size()-1)));
+			return ((cells.size()-1) - (idxNextCell-cells.size()-1));
+		}
 		return idxNextCell;
 	}
 	
@@ -124,6 +126,15 @@ public abstract class Board {
 	 */
 	public Cell getEndCell() {
 		return cells.get(this.getEndCellIdx());
+	}
+	
+	/**
+	 * Gets the cell at the specified index
+	 * @param idx the index
+	 * @return the cell at the index
+	 */
+	public Cell getCelll(int idx){
+		return cells.get(idx);
 	}
 	
 	/**
