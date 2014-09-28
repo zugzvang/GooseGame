@@ -15,4 +15,6 @@ public interface Cell {
 	public void welcome(Player player);
 
 	public void leave();
+
+	public Player getPlayer();
 }

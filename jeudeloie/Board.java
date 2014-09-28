@@ -18,7 +18,7 @@ import java.util.List;
  * </p>
  * 
  * 
- * @author Théo Plockyn & Rémy Debue
+ * @author Theo Plockyn & Remy Debue
  */
 public abstract class Board {
 	protected List<Player> players;
@@ -50,15 +50,6 @@ public abstract class Board {
 	}
 	
 	/**
-	 * Refactors the board's size getter.
-	 * @return the size of the board.
-	 */
-	private int getNbCells() {
-		return cells.size();
-		
-	}
-	
-	/**
 	 * Plays the turn with the specified player. Calculates the movement done by the player and actually moves it.
 	 * @param p the current player.
 	 * @param diceThrow the player dice's score.
@@ -70,12 +61,12 @@ public abstract class Board {
 			// Makes the score stay within the bounds
 			System.out.print(p.getName()+" throws a "+diceThrow+"");
 			idxNextCell = this.normalize(p.getCurrentCell()+diceThrow);
-			// Then applies the optionnal special effect
+			// Then applies the optional special effect
 			idxNextCell = this.getCell(idxNextCell).handleMove(diceThrow);
 			// And makes it stay within the bounds again
 			idxNextCell=this.normalize(idxNextCell);
 			System.out.print(" cell "+idxNextCell+" is reached\n");
-			// To finnally make the player move to the actual cell
+			// To finally make the player move to the actual cell
 			this.moveTo(p, idxNextCell);
 		}else{
 			if(currCell.isRetaining()){
@@ -96,12 +87,14 @@ public abstract class Board {
 		tmpCell=p1.getCurrentCell();
 		p1.setCell(p2.getCurrentCell());
 		p2.setCell(tmpCell);
+		cells.get(p1.getCurrentCell()).welcome(p1);
+		cells.get(p2.getCurrentCell()).welcome(p2);
 	}
 	
 	public abstract void init();
 	
 	/**
-	 * Moves the player to it's new cell, swapping players if the new cell is already occupied.
+	 * Moves the player to its new cell, swapping players if the new cell is already occupied.
 	 * @param p this turn's player.
 	 * @param cell the cell where the player is going to be.
 	 */
@@ -122,14 +115,7 @@ public abstract class Board {
 	 * @return the player occupying it, null if the cell is empty.
 	 */
 	public Player getPlayerFromCell(int cell) {
-		Player p;
-		for(int i=0; i<players.size(); i++){
-			p = players.get(i);
-			if(p.getCurrentCell()==cell){
-				return p;
-			}
-		}
-		return null;
+		return cells.get(cell).getPlayer();
 	}
 
 	/**
@@ -154,9 +140,9 @@ public abstract class Board {
 	 */
 	public boolean arePlayersTrapped(){
 		int countPlayers=0;
-		for(int i=0; i<this.getNbCells(); i++){
+		for(int i=0; i<this.players.size(); i++){
 			// Checks if the cell is a TrapCell, and only then if it is busy
-			if(cells.get(i) instanceof TrapCell && cells.get(i).isBusy()){
+			if(cells.get(players.get(i).getCurrentCell()) instanceof TrapCell){
 				countPlayers++;
 			}
 		}
