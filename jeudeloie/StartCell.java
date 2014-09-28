@@ -75,6 +75,10 @@ public class StartCell implements Cell {
 		
 	}
 	
+	public void initPlayers(List<Player> players){
+		this.players.addAll(players);
+	}
+	
 	public void leaveStart(Player player){
 		players.remove(player);
 	}

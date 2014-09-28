@@ -25,7 +25,9 @@ public class NormalBoard extends Board {
 	@Override
 	public void init() {
 		List<Cell> cells = new ArrayList<Cell>();
-		cells.add(new StartCell());
+		StartCell sc = new StartCell();
+		sc.initPlayers(this.players);
+		cells.add(sc);
 		for(int i=1; i<64;i++){
 			cells.add(new NormalCell(i));
 		}
