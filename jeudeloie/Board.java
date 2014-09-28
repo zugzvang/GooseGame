@@ -104,9 +104,13 @@ public abstract class Board {
 			swap(p, this.getPlayerFromCell(cell));
 		}else{
 			// Leave the cell ( isBusy is now false ) then move to the new cell and turns it's isBusy to true.
-			cells.get(p.getCurrentCell()).leave();
+			if(p.getCurrentCell()>0){
+				this.getCell(p.getCurrentCell()).leave();
+			}else if(this.getCell(p.getCurrentCell()) instanceof StartCell){
+				((StartCell)this.getCell(p.getCurrentCell())).leaveStart(p);
+			}
 			p.setCell(cell);
-			cells.get(cell).welcome(p);
+			this.getCell(cell).welcome(p);
 		}
 	}
 
@@ -118,6 +122,14 @@ public abstract class Board {
 	public Player getPlayerFromCell(int cell) {
 		return cells.get(cell).getPlayer();
 	}
+	
+	/**
+	 * Returns the players at the start.
+	 * @return a list of players at the start
+	 */
+	public List<Player> getPlayersAtStart(){
+		return ((StartCell)this.getCell(0)).getPlayersAtStart();
+	}
 
 	/**
 	 * Returns the last cell of the board.
@@ -125,15 +137,6 @@ public abstract class Board {
 	 */
 	public Cell getEndCell() {
 		return cells.get(this.getEndCellIdx());
-	}
-	
-	/**
-	 * Gets the cell at the specified index
-	 * @param idx the index
-	 * @return the cell at the index
-	 */
-	public Cell getCelll(int idx){
-		return cells.get(idx);
 	}
 	
 	/**

@@ -3,19 +3,28 @@
  */
 package jeudeloie;
 
+import java.util.*;
+
 /**
- * @author Theo
+ * Implements Cell, and holds multiple players.
+ * @author Theo Plockyn & Remy Debue
  *
  */
 public class StartCell implements Cell {
 
+	private int idx=0;
+	private List<Player> players;
+	
+	public StartCell(){
+		this.players = new ArrayList<Player>();
+	}
+	
 	/* (non-Javadoc)
 	 * @see jeudeloie.Cell#canBeLeftNow()
 	 */
 	@Override
 	public boolean canBeLeftNow() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	/* (non-Javadoc)
@@ -23,7 +32,6 @@ public class StartCell implements Cell {
 	 */
 	@Override
 	public boolean isRetaining() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -32,8 +40,7 @@ public class StartCell implements Cell {
 	 */
 	@Override
 	public int getIndex() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.idx;
 	}
 
 	/* (non-Javadoc)
@@ -41,7 +48,6 @@ public class StartCell implements Cell {
 	 */
 	@Override
 	public int handleMove(int diceThrow) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -50,7 +56,6 @@ public class StartCell implements Cell {
 	 */
 	@Override
 	public boolean isBusy() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -59,8 +64,7 @@ public class StartCell implements Cell {
 	 */
 	@Override
 	public void welcome(Player player) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -68,16 +72,19 @@ public class StartCell implements Cell {
 	 */
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
-
+		
+	}
+	
+	public void leaveStart(Player player){
+		players.remove(player);
 	}
 
-	/* (non-Javadoc)
-	 * @see jeudeloie.Cell#getPlayer()
-	 */
+	public List<Player> getPlayersAtStart() {
+		return players;
+	}
+
 	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
