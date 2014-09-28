@@ -64,7 +64,9 @@ public class testBoard {
 
 	@Test
 	public void testStartCell() {
-		assertEquals(list_player.get(0), b.getPlayerFromCell(0));
+		for(int i = 0 ; i < list_player.size();i++) {
+			assertEquals(list_player.get(i), b.getPlayersAtStart().get(i));
+		}
 	}
 
 	@Test
