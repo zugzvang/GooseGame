@@ -89,5 +89,14 @@ public class testBoard {
 		b.playTurn(list_player.get(0), 12);
 		assertEquals(54, list_player.get(0).getCurrentCell());
 	}
+	
+	@Test
+	public void testGetLastCell() {
+		list_player.add(new Player("Michel"));
+		list_player.add(new Player("Fabrice"));
+		b = new NormalBoard(list_player);
+		//assertEquals(,b.getEndCell());
+	}
+
 
 }
