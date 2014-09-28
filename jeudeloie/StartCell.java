@@ -44,13 +44,18 @@ public class StartCell implements Cell {
 		return false;
 	}
 
-
+	/**
+	 * Is never used, returns null.
+	 */
 	@Deprecated
 	@Override
 	public void welcome(Player player) {
 		// Unused
 	}
 
+	/**
+	 * Is never used, returns null.
+	 */
 	@Deprecated
 	@Override
 	public void leave() {
@@ -81,6 +86,10 @@ public class StartCell implements Cell {
 		return players;
 	}
 
+	/**
+	 * Is never used, returns null.
+	 */
+	@Deprecated
 	@Override
 	public Player getPlayer() {
 		return null;
