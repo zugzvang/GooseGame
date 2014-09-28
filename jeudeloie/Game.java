@@ -1,6 +1,5 @@
 package jeudeloie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -84,7 +83,7 @@ public class Game {
 		return board.getPlayerFromCell(board.getEndCellIdx());
 	}
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Player p1 = new Player("Jean carle");
 		Player p2 = new Player("Mickael hauspie");
 		Player p3 = new Player("Philippe matthieu");
@@ -100,7 +99,7 @@ public class Game {
 		Game game = new Game(players, board);
 		
 		game.play();
-	}
+	}*/
 	
 
 }

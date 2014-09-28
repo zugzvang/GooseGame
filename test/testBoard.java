@@ -13,6 +13,7 @@ import jeudeloie.NormalBoard;
 import jeudeloie.Player;
 import jeudeloie.TeleportCell;
 import jeudeloie.TrapCell;
+import jeudeloie.WaitCell;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,16 +26,14 @@ public class testBoard {
 	@Before
 	public void init() {
 		list_player = new ArrayList<Player>();
-		b = new NormalBoard(null);
 		p = new Player("test");
-
+		list_player.add(new Player("Michel"));
+		list_player.add(new Player("Fabrice"));
+		b = new NormalBoard(list_player);
 	}
 
 	@Test
 	public void testNonTrappedPlayer() {
-		list_player = new ArrayList<Player>();
-		list_player.add(new Player("Robert"));
-		b = new NormalBoard(list_player);
 		assertFalse(b.arePlayersTrapped());
 	}
 
@@ -65,36 +64,42 @@ public class testBoard {
 
 	@Test
 	public void testStartCell() {
-		list_player = new ArrayList<Player>();
-		list_player.add(new Player("Robert"));
-		b = new NormalBoard(list_player);
 		assertEquals(list_player.get(0), b.getPlayerFromCell(0));
 	}
 
 	@Test
 	public void testMultiplePlayersStartCell() {
-		list_player = new ArrayList<Player>();
-		list_player.add(new Player("Robert"));
-		list_player.add(new Player("Jean"));
-		b = new NormalBoard(list_player);
 		assertEquals(list_player.get(0), b.getPlayerFromCell(0));
 	}
 
 	@Test
 	public void testNormalizeCell() {
-		list_player.add(new Player("Michel"));
-		list_player.add(new Player("Fabrice"));
-		b = new NormalBoard(list_player);
 		list_player.get(0).setCell(60);
 		b.playTurn(list_player.get(0), 12);
 		assertEquals(54, list_player.get(0).getCurrentCell());
 	}
 	
 	@Test
+	public void testWaitCell() {
+
+		WaitCell wc = new WaitCell(10,3);
+		wc.welcome(list_player.get(0));
+		assertFalse(wc.canBeLeftNow());
+		assertFalse(wc.canBeLeftNow());
+		assertEquals(1,wc.getWaitTime());
+		assertFalse(wc.canBeLeftNow());
+		assertTrue(wc.canBeLeftNow());
+		
+	}
+	@Test
+	public void testWaitHandleMove() {
+		WaitCell wc = new WaitCell(10,3);
+		assertEquals(wc.getIndex(),wc.handleMove(10));
+	}
+	
+	@Test
 	public void testGetLastCell() {
-		list_player.add(new Player("Michel"));
-		list_player.add(new Player("Fabrice"));
-		b = new NormalBoard(list_player);
+
 		//assertEquals(,b.getEndCell());
 	}
 
