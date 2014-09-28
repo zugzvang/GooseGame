@@ -155,7 +155,7 @@ public abstract class Board {
 		int countPlayers=0;
 		for(int i=0; i<this.players.size(); i++){
 			// Checks if the cell is a TrapCell, and only then if it is busy
-			if(cells.get(players.get(i).getCurrentCell()) instanceof TrapCell){
+			if(cells.get(players.get(i).getCurrentCell()).isRetaining()){
 				countPlayers++;
 			}
 		}
