@@ -58,7 +58,7 @@ public class NormalCell implements Cell {
 	@Override
 	public void welcome(Player player) {
 		this.player = player;
-
+		this.player.setCell(this.index);
 	}
 
 	@Override

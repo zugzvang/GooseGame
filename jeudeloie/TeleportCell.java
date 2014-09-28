@@ -1,5 +1,10 @@
 package jeudeloie;
 
+/**
+ * TeleportCell is a special cell teleporting to a specified cell.
+ * @author Theo Plockyn & Remy Debue
+ *
+ */
 public class TeleportCell extends NormalCell{
 
 	private int teleIdx;
