@@ -27,10 +27,9 @@ public class testBoard {
 		list_player = new ArrayList<Player>();
 		b = new NormalBoard(null);
 		p = new Player("test");
-		
+
 	}
-	
-	
+
 	@Test
 	public void testNonTrappedPlayer() {
 		list_player = new ArrayList<Player>();
@@ -52,16 +51,16 @@ public class testBoard {
 		GooseCell gc = new GooseCell(10);
 		gc.welcome(p);
 		gc.handleMove(5);
-		assertEquals(15,gc.handleMove(5));
+		assertEquals(15, gc.handleMove(5));
 	}
-	
+
 	@Test
 	public void testTeleportCell() {
 		int destination = 10;
 		TeleportCell tc = new TeleportCell(5, destination);
 		tc.handleMove(5);
-		assertEquals(10,tc.handleMove(5));
-		
+		assertEquals(10, tc.handleMove(5));
+
 	}
 
 	@Test
@@ -80,7 +79,7 @@ public class testBoard {
 		b = new NormalBoard(list_player);
 		assertEquals(list_player.get(0), b.getPlayerFromCell(0));
 	}
-	
+
 	@Test
 	public void testNormalizeCell() {
 		list_player.add(new Player("Michel"));
@@ -88,8 +87,7 @@ public class testBoard {
 		b = new NormalBoard(list_player);
 		list_player.get(0).setCell(60);
 		b.playTurn(list_player.get(0), 12);
-		assertEquals(53,list_player.get(0).getCurrentCell());
+		assertEquals(54, list_player.get(0).getCurrentCell());
 	}
-	
 
 }
