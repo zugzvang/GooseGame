@@ -25,7 +25,8 @@ public class NormalBoard extends Board {
 	@Override
 	public void init() {
 		List<Cell> cells = new ArrayList<Cell>();
-		for(int i=0; i<64;i++){
+		cells.add(new StartCell());
+		for(int i=1; i<64;i++){
 			cells.add(new NormalCell(i));
 		}
 		super.cells=cells;

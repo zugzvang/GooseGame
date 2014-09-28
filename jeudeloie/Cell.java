@@ -1,5 +1,10 @@
 package jeudeloie;
 
+/**
+ * 
+ * @author Theo Plockyn & Remy Debue
+ *
+ */
 public interface Cell {
 
 	public boolean canBeLeftNow();
