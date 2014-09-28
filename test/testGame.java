@@ -38,8 +38,8 @@ public class testGame {
 	public void testFinishedWhenTrapped() {
 		assertFalse(g.isFinished());
 		// 31 and 52 are the two trap cells
-		b.getCell(31).welcome(list_players.get(0));
-		b.getCell(52).welcome(list_players.get(1));
+		b.moveTo(list_players.get(0),31);
+		b.moveTo(list_players.get(1),52);
 		assertTrue(g.isFinished());
 	}
 	
@@ -47,4 +47,15 @@ public class testGame {
 	public void testNextPlayer() {
 		assertEquals(list_players.get(0),g.nextPlayer());
 	}
+	@Test
+	public void testDiceThrow() {
+		assertTrue(g.diceThrow() > 1 && g.diceThrow()  <=12 && !(g.diceThrow()  < 1 || g.diceThrow()  > 12));
+	}
+	
+	@Test
+	public void testGetWinner() {
+		b.moveTo(list_players.get(0), 63);
+		assertEquals(list_players.get(0),g.getWinner());
+	}
+
 }

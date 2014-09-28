@@ -44,14 +44,17 @@ public class StartCell implements Cell {
 		return false;
 	}
 
+
+	@Deprecated
 	@Override
 	public void welcome(Player player) {
-		
+		// Unused
 	}
 
+	@Deprecated
 	@Override
 	public void leave() {
-		
+		// Unused
 	}
 	
 	/**

@@ -8,7 +8,6 @@ import org.junit.Test;
 
 
 public class testDice {
-	Dice d = new Dice();
 	
 	@Test 
 	public void testThrowDice() {
@@ -16,9 +15,6 @@ public class testDice {
 		assertFalse(Dice.throwDice() < 1 || Dice.throwDice() > 12);
 	}
 	
-	@Test
-	public void testExistence() {
-		assertFalse(d == null);
-	}
+
 
 }

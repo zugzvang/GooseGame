@@ -68,19 +68,47 @@ public class testBoard {
 			assertEquals(list_player.get(i), b.getPlayersAtStart().get(i));
 		}
 	}
+	@Test
+	public void testStartIndex() {
+		assertEquals(0,b.getCell(0).getIndex());
+	}
+	
+	@Test
+	public void testHandleMoveStartCell() {
+		assertEquals(0,b.getCell(0).handleMove(10));
+	}
+	
+	@Test
+	public void testIsBusyStartCell() {
+		assertEquals(false,b.getCell(0).isBusy());
+	}
 
 	@Test
 	public void testMultiplePlayersStartCell() {
-		assertEquals(list_player.get(0), b.getPlayerFromCell(0));
+		assertEquals(list_player,b.getPlayersAtStart());
 	}
 
 	@Test
 	public void testNormalizeCell() {
 		list_player.get(0).setCell(60);
 		b.playTurn(list_player.get(0), 12);
-		assertEquals(54, list_player.get(0).getCurrentCell());
+		assertEquals(60, list_player.get(0).getCurrentCell());
 	}
 	
+	@Test
+	public void testHandleMoveTrapCell() {
+		assertEquals(52,b.getCell(52).handleMove(10));
+	}
+	
+	@Test
+	public void testCanBeLeftNowStartCell() {
+		assertEquals(true,b.getCell(0).canBeLeftNow());
+	}
+	
+	@Test
+	public void testGetPlayerStartCell() {
+		assertEquals(null,b.getCell(0).getPlayer());
+	}
 	@Test
 	public void testWaitCell() {
 

@@ -8,7 +8,7 @@ import java.util.Random;
  * 
  * @author Theo Plockyn & Remy Debue
  */
-public class Dice {
+public abstract class Dice {
 	/**
 	 * Throws the dice (2d6)
 	 * @return The result of the throw
