@@ -45,7 +45,7 @@ public abstract class Board {
 	 * @param idx the index of the wanted cell.
 	 * @return the cell at the index idx.
 	 */
-	private Cell getCell(int idx) {
+	public Cell getCell(int idx) {
 		return cells.get(idx);
 		
 	}

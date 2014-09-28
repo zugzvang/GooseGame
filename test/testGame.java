@@ -11,7 +11,6 @@ import jeudeloie.Board;
 import jeudeloie.Game;
 import jeudeloie.NormalBoard;
 import jeudeloie.Player;
-import jeudeloie.TrapCell;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,13 +37,10 @@ public class testGame {
 	@Test
 	public void testFinishedWhenTrapped() {
 		assertFalse(g.isFinished());
-		TrapCell tc = new TrapCell(10);
-		TrapCell tc2 = new TrapCell(12);
-		tc.welcome(list_players.get(0));
-		assertFalse(g.isFinished());
-		tc2.welcome(list_players.get(1));
+		// 31 and 52 are the two trap cells
+		b.getCell(31).welcome(list_players.get(0));
+		b.getCell(52).welcome(list_players.get(1));
 		assertTrue(g.isFinished());
-
 	}
 	
 	@Test
