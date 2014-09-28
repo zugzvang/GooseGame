@@ -27,6 +27,7 @@ public class testBoard {
 		list_player = new ArrayList<Player>();
 		b = new NormalBoard(null);
 		p = new Player("test");
+		
 	}
 	
 	
@@ -79,5 +80,16 @@ public class testBoard {
 		b = new NormalBoard(list_player);
 		assertEquals(list_player.get(0), b.getPlayerFromCell(0));
 	}
+	
+	@Test
+	public void testNormalizeCell() {
+		list_player.add(new Player("Michel"));
+		list_player.add(new Player("Fabrice"));
+		b = new NormalBoard(list_player);
+		list_player.get(0).setCell(60);
+		b.playTurn(list_player.get(0), 12);
+		assertEquals(53,list_player.get(0).getCurrentCell());
+	}
+	
 
 }
