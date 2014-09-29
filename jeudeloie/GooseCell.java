@@ -17,7 +17,7 @@ public class GooseCell extends NormalCell {
 	 */
 	@Override
 	public int handleMove(int diceThrow) {
-		System.out.println(" but it's a goose cell !");
+		System.out.print(" reaches a goose cell !");
 		return this.idx + diceThrow;
 	}
 

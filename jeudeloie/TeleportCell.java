@@ -23,7 +23,7 @@ public class TeleportCell extends NormalCell{
 	 */
 	@Override
 	public int handleMove(int diceThrow) {
-		System.out.println(" but it's a teleport cell !");
+		System.out.println(" reaches a teleport cell !");
 		return this.teleIdx;
 	}
 

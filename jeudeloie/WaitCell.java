@@ -37,6 +37,11 @@ public class WaitCell extends NormalCell {
 	public int getWaitTime(){
 		return this.waitTime;
 	}
+	
+	/**
+	 * Gets the actual waiting time ( equals to waitTime if nobody entered the cell )
+	 * @return the number of turns players have left to wait. 
+	 */
 	public int getitWaitTime(){
 		return this.itWaitTime;
 	}
@@ -44,7 +49,7 @@ public class WaitCell extends NormalCell {
 	
 	@Override
 	public int handleMove(int diceThrow) {
-		System.out.print(" but it's a wait cell !");
+		System.out.print(" and reaches a wait cell !");
 		return super.handleMove(diceThrow);
 	}
 

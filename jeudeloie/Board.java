@@ -61,6 +61,9 @@ public abstract class Board {
 			int idxNextCell;
 			// Makes the score stay within the bounds
 			System.out.print(p.getName()+" throws a "+diceThrow+"");
+			if(p.getCurrentCell()+diceThrow==63){
+				System.err.println("FINI");
+			}
 			idxNextCell = this.normalize(p.getCurrentCell()+diceThrow);
 			// Then applies the optional special effect
 			idxNextCell = this.getCell(idxNextCell).handleMove(diceThrow);
@@ -144,7 +147,7 @@ public abstract class Board {
 	 * @return the last cell's index.
 	 */
 	public int getEndCellIdx(){
-		return cells.size()-1;
+		return (cells.size()-1);
 	}
 	
 	/**
@@ -166,6 +169,10 @@ public abstract class Board {
 		return false;
 	}
 	
+	/**
+	 * Gets all the cells.
+	 * @return the cells.
+	 */
 	public List<Cell> getCells() {
 		return this.cells;
 	}

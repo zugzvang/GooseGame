@@ -22,7 +22,7 @@ public class TrapCell extends NormalCell {
 	
 	@Override
 	public int handleMove(int diceThrow) {
-		System.out.print(" but it's a trap cell !");
+		System.out.print(" and reaches a trap cell !");
 		return super.handleMove(diceThrow);
 	}
 

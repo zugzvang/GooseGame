@@ -1,6 +1,8 @@
 package jeudeloie;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * <b>Game is the class which contains all the core rules of the game.</b>
@@ -83,23 +85,28 @@ public class Game {
 		return board.getPlayerFromCell(board.getEndCellIdx());
 	}
 	
-	/*public static void main(String[] args){
-		Player p1 = new Player("Jean carle");
-		Player p2 = new Player("Mickael hauspie");
-		Player p3 = new Player("Philippe matthieu");
-		Player p4 = new Player("Yann secq");
-		
+	public static void main(String[] args){
+		String pName = "";
 		List<Player> players = new ArrayList<Player>();
-		players.add(p1);
-		players.add(p2);
-		players.add(p3);
-		players.add(p4);
-		
+		Scanner sc = new Scanner(System.in);
+		do{
+			System.out.println("Entrez un nom pour ajouter un joueur à la partie de jeu de l'oie :");
+			System.out.println("(Faites simplement entrée lorsque tous les joueurs ont été entrés)");
+			pName = sc.nextLine();
+			if(!pName.equals(""))
+				players.add(new Player(pName));
+		}while(!pName.equals(""));
+		if(players.size()<=1){
+			System.out.println("Il faut au moins deux joueur !");
+			for(int i=players.size(); i<2;i++){
+				players.add(new Player("Joueur "+(i+1)));
+			}
+		}
 		Board board = new NormalBoard(players);
 		Game game = new Game(players, board);
-		
+		sc.close();
 		game.play();
-	}*/
+	}
 	
 
 }
