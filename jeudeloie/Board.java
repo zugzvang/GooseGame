@@ -83,7 +83,7 @@ public abstract class Board {
 	 * @param p1 the first player.
 	 * @param p2 the second player.
 	 */
-	private void swap(Player p1, Player p2) {
+	public void swap(Player p1, Player p2) {
 		int tmpCell;
 		tmpCell=p1.getCurrentCell();
 		p1.setCell(p2.getCurrentCell());
@@ -164,6 +164,10 @@ public abstract class Board {
 			return true;
 		}
 		return false;
+	}
+	
+	public List<Cell> getCells() {
+		return this.cells;
 	}
 	
 	

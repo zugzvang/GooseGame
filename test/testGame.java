@@ -49,7 +49,14 @@ public class testGame {
 	}
 	@Test
 	public void testDiceThrow() {
-		assertTrue(g.diceThrow() > 1 && g.diceThrow()  <=12 && !(g.diceThrow()  < 1 || g.diceThrow()  > 12));
+		assertTrue(g.diceThrow() > 1 && g.diceThrow()  <=12 && !(g.diceThrow()  < 1 || (g.diceThrow()  > 12)));
+	}
+	
+	@Test
+	public void testTheGame() {
+		assertEquals(null,g.getWinner());
+		assertFalse(g.isFinished());
+
 	}
 	
 	@Test

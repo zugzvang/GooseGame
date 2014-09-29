@@ -110,16 +110,23 @@ public class testBoard {
 		assertEquals(null,b.getCell(0).getPlayer());
 	}
 	@Test
-	public void testWaitCell() {
+	public void testitWaitCell() {
 
 		WaitCell wc = new WaitCell(10,3);
 		wc.welcome(list_player.get(0));
 		assertFalse(wc.canBeLeftNow());
 		assertFalse(wc.canBeLeftNow());
-		assertEquals(1,wc.getWaitTime());
+		assertEquals(1,wc.getitWaitTime());
 		assertFalse(wc.canBeLeftNow());
 		assertTrue(wc.canBeLeftNow());
 		
+	}
+	
+	@Test 
+	public void testWaitCell() {
+		WaitCell wc = new WaitCell(10,5);
+		wc.welcome(list_player.get(0));
+		assertEquals(5,wc.getWaitTime());
 	}
 	@Test
 	public void testWaitHandleMove() {
@@ -130,7 +137,16 @@ public class testBoard {
 	@Test
 	public void testGetLastCell() {
 
-		//assertEquals(,b.getEndCell());
+		assertEquals(b.getCell(b.getCells().size() - 1),b.getEndCell());
+	}
+	
+	@Test
+	public void testSwapPlayers() {
+		list_player.get(0).setCell(2);
+		list_player.get(1).setCell(3);
+		b.swap(list_player.get(0), list_player.get(1));
+		assertEquals(2,list_player.get(1).getCurrentCell());
+		assertEquals(3,list_player.get(0).getCurrentCell());
 	}
 
 

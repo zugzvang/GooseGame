@@ -37,6 +37,10 @@ public class WaitCell extends NormalCell {
 	public int getWaitTime(){
 		return this.waitTime;
 	}
+	public int getitWaitTime(){
+		return this.itWaitTime;
+	}
+	
 	
 	@Override
 	public int handleMove(int diceThrow) {
