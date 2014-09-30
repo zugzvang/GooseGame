@@ -37,10 +37,10 @@ public class NormalBoard extends Board {
 		 * 
 		 */
 		for(int i=1; i<64;i++){
-			if(i%9==0){
+			if(i%9==0&&i!=63){
 				cells.add(new GooseCell(i));
-			//}else if(i==31||i==52){
-			//	cells.add(new TrapCell(i));
+			}else if(i==31||i==52){
+				cells.add(new TrapCell(i));
 			}else if(i==19){
 				cells.add(new WaitCell(i, 2));
 			}else if(i==6){
