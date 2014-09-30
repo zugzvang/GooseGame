@@ -91,9 +91,9 @@ public class testBoard {
 	@Test
 	public void testNormalizeCell() {
 		list_player.get(0).setCell(55);
-		b.playTurn(list_player.get(0), 8);
+		b.playTurn(list_player.get(0), 11);
 		System.out.println(""+list_player.get(0).getCurrentCell());
-		assertEquals(63, list_player.get(0).getCurrentCell());
+		assertEquals(60, list_player.get(0).getCurrentCell());
 	}
 	
 	@Test
