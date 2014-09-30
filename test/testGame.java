@@ -51,12 +51,18 @@ public class testGame {
 	public void testDiceThrow() {
 		assertTrue(g.diceThrow() > 1 && g.diceThrow()  <=12 && !(g.diceThrow()  < 1 || (g.diceThrow()  > 12)));
 	}
-	
 	@Test
 	public void testTheGame() {
 		assertEquals(null,g.getWinner());
 		assertFalse(g.isFinished());
+		g.play();
+		assertTrue(g.isFinished());
+		assertEquals(g.getWinner(),b.getEndCell().getPlayer());
 
+	}
+	@Test
+	public void testMain() {
+		Game.main(null);
 	}
 	
 	@Test
